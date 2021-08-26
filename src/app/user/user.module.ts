@@ -5,7 +5,9 @@ import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
+
+
 
 
 
