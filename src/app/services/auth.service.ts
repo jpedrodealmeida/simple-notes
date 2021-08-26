@@ -10,7 +10,7 @@ export class AuthService {
   constructor() { }
 
   public verifyAuthentication(): boolean{
-    return true
+    return this.isAuthenticated
   }
   
 }
