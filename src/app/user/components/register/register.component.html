@@ -16,8 +16,7 @@
                 <mat-label>Password confirmation</mat-label>
                 <input matInput formControlName="passwordConfirmation" type="password" value="">
             </mat-form-field>
-            <div *ngIf="!form.valid">{{form.errors | json}}</div>
         </form>
-        <button mat-raised-button color="primary" (click)="save()">Save</button>
+        <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="save()">Save</button>
     </mat-card>
 </div>

@@ -20,14 +20,17 @@ export class RegisterComponent implements OnInit {
   }
   private passwordInputListen(){
     this.form.controls['passwordConfirmation'].valueChanges.subscribe(value =>{
-      let password = this.form.controls['password'].value
-      if(value !== password){
-        this.form.controls['password'].setErrors({'incorrect': true})
-      }else{
-        this.form.controls['password'].setErrors(null)
-      }
-        
+      this.passwordMatch(value)
     })
+  }
+
+  private passwordMatch(pass: string){
+    let password = this.form.controls['password'].value
+    if(pass !== password){
+      this.form.controls['passwordConfirmation'].setErrors({'incorrect': true})
+    }else{
+      this.form.controls['passwordConfirmation'].setErrors(null)
+    }
   }
 
   private formInit(){
