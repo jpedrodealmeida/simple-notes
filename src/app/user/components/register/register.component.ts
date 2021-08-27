@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from 'src/app/interfaces/user.interface';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +15,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -42,8 +46,24 @@ export class RegisterComponent implements OnInit {
     this.passwordInputListen()
   }
 
-  public save(){
+  private getFormValue(): User{
+    let user: User = {
+      name: this.form.controls['userName'].value,
+      password: this.form.controls['password'].value
+    }
+    return user
+  }
+  private formClear(){
+    this.form.controls['userName'].patchValue('')
+    this.form.controls['password'].patchValue('')
+    this.form.controls['passwordConfirmation'].patchValue('')
+  }
 
+  public save(){
+    let user = this.getFormValue()
+    this.userService.saveUser(user)
+    this.formClear()
+    this.router.navigate(['/login'])
   }
 
 }
