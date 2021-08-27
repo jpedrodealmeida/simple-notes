@@ -4,6 +4,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { NoteListComponent } from './note/components/note-list/note-list.component';
 import { LoginComponent } from './user/components/login/login.component';
+import { RegisterComponent } from './user/components/register/register.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
     path: 'noteList',
     component: NoteListComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'registration',
+    component: RegisterComponent
   }
 ];
 
