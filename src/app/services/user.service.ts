@@ -6,6 +6,8 @@ import { User } from '../interfaces/user.interface';
 })
 export class UserService {
 
+  private userList!: User[]
+
   constructor() { 
     
   }
@@ -38,5 +40,13 @@ export class UserService {
     if(userFromStorage)
       return JSON.parse(userFromStorage)
     return null
+  }
+  public getUserByName(name: string): User | undefined{
+    let list = this.getUsers()
+    if(list !== null){
+      let userFound = list.find(user => user.name == name)
+      return userFound
+    }
+    return undefined
   }
 }
