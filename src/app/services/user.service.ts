@@ -26,7 +26,7 @@ export class UserService {
     if(users == null)
       localStorage.setItem('users', JSON.stringify([user]))
     else{
-      users.push(user)
+      users = this.addUserOnList(user, users)
       localStorage.setItem('users', JSON.stringify(users))
     }
   }
@@ -48,5 +48,17 @@ export class UserService {
       return userFound
     }
     return undefined
+  }
+    /**
+   * @author Joao Pedro
+   * @param user User {id: number, name: string, password: string}
+   * @param userList Array of current user list [{id: number, name: string, password: string}]
+   * @description Method to push new user on user list
+   * @returns Array of User [{id: number, name: string, password: string}]
+   */
+  private addUserOnList(user: User, userList: User[]): User[]{
+    user.id = userList.length
+    userList.push(user)
+    return userList
   }
 }
