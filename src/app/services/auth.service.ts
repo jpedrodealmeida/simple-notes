@@ -19,16 +19,20 @@ export class AuthService {
       this.userAuthenticate(JSON.parse(userAuth))
     return this.isAuthenticated
   }
-  public userAuthenticate(user: User){
+  public userAuthenticate(user: User): void{
     let storageUser = this.userService.getUserByName(user.name) || undefined
     if(storageUser){
       if(user.password == storageUser.password)
         this.setUserCredentials(user)
     }
   }
-  private setUserCredentials(user: User){
+  private setUserCredentials(user: User): void{
     this.isAuthenticated = true
     localStorage.setItem('auth', JSON.stringify(user))
+  }
+  public logout(): void{
+    this.isAuthenticated = false
+    localStorage.removeItem('auth')
   }
 
   

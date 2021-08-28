@@ -22,7 +22,7 @@
             <mat-menu #notes="matMenu">
                 <button mat-menu-item [matMenuTriggerFor]="options">Notes</button>
                 <button mat-menu-item [matMenuTriggerFor]="exports">Exports</button>
-                <button mat-menu-item>Logout</button>
+                <button mat-menu-item (click)="logout()">Logout</button>
             </mat-menu>
             <mat-menu #options="matMenu">
                 <button mat-menu-item>Create note</button>
