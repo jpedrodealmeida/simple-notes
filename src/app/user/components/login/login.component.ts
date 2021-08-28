@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
 
   private getFormValue(): User{
     let user: User = {
+      id: 0,
       name: this.form.controls['userName'].value,
       password: this.form.controls['password'].value
     }
