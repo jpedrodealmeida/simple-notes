@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { MainComponent } from './note/components/main/main.component';
 
-import { NoteListComponent } from './note/components/note-list/note-list.component';
 import { LoginComponent } from './user/components/login/login.component';
 import { RegisterComponent } from './user/components/register/register.component';
 
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'noteList',
-    component: NoteListComponent,
+    component: MainComponent,
     canActivate: [AuthGuard]
   },
   {
