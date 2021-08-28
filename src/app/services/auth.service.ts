@@ -14,14 +14,22 @@ export class AuthService {
   ) { }
 
   public verifyAuthentication(): boolean{
+    let userAuth = localStorage.getItem('auth')
+    if(userAuth)
+      this.userAuthenticate(JSON.parse(userAuth))
     return this.isAuthenticated
   }
   public userAuthenticate(user: User){
     let storageUser = this.userService.getUserByName(user.name) || undefined
     if(storageUser){
       if(user.password == storageUser.password)
-        this.isAuthenticated = true
+        this.setUserCredentials(user)
     }
   }
+  private setUserCredentials(user: User){
+    this.isAuthenticated = true
+    localStorage.setItem('auth', JSON.stringify(user))
+  }
+
   
 }
