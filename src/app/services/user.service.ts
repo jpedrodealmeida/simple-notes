@@ -14,7 +14,7 @@ export class UserService {
 
   /**
    * @author Joao Pedro
-   * @param user {name: string, password: string} 
+   * @param user {id: number, name: string, password: string} 
    * @description Method to save user in local storage
    * @returns void
    */
@@ -33,7 +33,7 @@ export class UserService {
    /**
    * @author Joao Pedro
    * @description Method to get users in local storage
-   * @returns User {name: string, password: string} or null
+   * @returns Array of User  [{id: number, name: string, password: string}] or null
    */
   private getUsers(): User[] | null{
     let userFromStorage = localStorage.getItem('users')
