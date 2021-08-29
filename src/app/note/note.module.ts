@@ -12,6 +12,7 @@ import { NoteListComponent } from './components/note-list/note-list.component';
 import { MainComponent } from './components/main/main.component';
 import { MatButtonModule } from '@angular/material/button';
 import { NoteCardComponent } from './components/note-card/note-card.component';
+import { NoteFormComponent } from './components/note-form/note-form.component';
 
 
 
@@ -20,7 +21,8 @@ import { NoteCardComponent } from './components/note-card/note-card.component';
   declarations: [
     NoteListComponent,
     MainComponent,
-    NoteCardComponent
+    NoteCardComponent,
+    NoteFormComponent
   ],
   imports: [
     CommonModule,
