@@ -1,8 +1,10 @@
+$base-color: #fba204;
+$base-text-color: #faf8f8;
 .card-structure{
     height: 222px;
     background: url(../../../../assets/back.png);
     display: grid;
-    grid-template-rows: 1fr 1fr 2fr;
+    grid-template-rows: 2fr 1fr 2fr;
 }
 .note-title{
     font-size: 24px;
@@ -16,15 +18,15 @@
 }
 .category{
     width: 100px;
-    border-right: #FC4A02 180px solid;
-    border-left: #FC4A02 12px solid;
-    border-top: #FC4A02 12px solid;
-    border-bottom: #FC4A02 12px solid;   
-    background-color: #FC4A02;
+    border-right: $base-color 180px solid;
+    border-left: $base-color 12px solid;
+    border-top: $base-color 12px solid;
+    border-bottom: $base-color 12px solid;   
+    background-color: $base-color;
     margin-right: -16px;
     border-radius: 30px 0 0 30px;
     font-size: 18px;
-    color: #ffff;
+    color: $base-text-color;
 }
 .note-body{
     text-align: justify;
@@ -39,4 +41,6 @@
 
 .button{
     margin-right: 12px;
+    background-color: #f15940;
+    color: $base-text-color;
 }
