@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MainComponent implements OnInit {
 
+  public hasNotification: boolean = true
+
   constructor(
     private authService: AuthService,
     private router: Router
@@ -19,5 +21,8 @@ export class MainComponent implements OnInit {
   public logout(){
     this.authService.logout()
     this.router.navigate(['/login'])
+  }
+  public showNotifications(){
+    this.hasNotification = !this.hasNotification
   }
 }

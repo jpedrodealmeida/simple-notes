@@ -29,11 +29,13 @@
                 <span>Filter</span>
                 <span class="example-spacer"></span>
         
-                <div class="share-grud">
-                   <span style="font-size: 18px;">Share note</span> 
-                    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-                        <mat-icon>share</mat-icon>
-                      </button>
+                <div class="info-grid">
+                   <span matBadgeColor="accent" matBadge="4" matBadgeOverlap="false"
+                    class="notifications" [matBadgeHidden]="hasNotification" 
+                    (click)="showNotifications()">Notifications</span> 
+
+
+
                 </div>
                 
               </mat-toolbar-row>

@@ -5,6 +5,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { MatCardModule } from '@angular/material/card';
 import { NoteListComponent } from './components/note-list/note-list.component';
@@ -28,7 +29,8 @@ import { NoteCardComponent } from './components/note-card/note-card.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatBadgeModule
   ]
 })
 export class NoteModule { }
