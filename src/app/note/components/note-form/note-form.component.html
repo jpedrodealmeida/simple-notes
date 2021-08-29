@@ -1,1 +1,16 @@
-<h1>note-form works!</h1>
+<div class="form-structure">
+    <form [formGroup]=form>
+        <mat-form-field class="login-input" appearance="fill">
+            <mat-label>User name</mat-label>
+            <input matInput formControlName="userName" placeholder="Ex. PedroAlmeida22" value="">
+        </mat-form-field>
+        <mat-form-field class="login-input" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" value="">
+        </mat-form-field>
+        <mat-form-field class="login-input" appearance="fill">
+            <mat-label>Password confirmation</mat-label>
+            <input matInput formControlName="passwordConfirmation" type="password" value="">
+        </mat-form-field>
+    </form>
+</div>

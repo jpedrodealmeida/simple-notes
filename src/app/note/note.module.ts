@@ -14,6 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { NoteCardComponent } from './components/note-card/note-card.component';
 import { NoteFormComponent } from './components/note-form/note-form.component';
 import { NoteRoutingModule } from './note-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -30,11 +32,14 @@ import { NoteRoutingModule } from './note-routing.module';
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
+    MatInputModule,
     MatIconModule,
     MatCardModule,
     FontAwesomeModule,
     MatBadgeModule,
-    NoteRoutingModule
+    NoteRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class NoteModule { }
