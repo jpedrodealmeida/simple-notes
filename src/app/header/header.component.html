@@ -14,7 +14,7 @@
                 </mat-menu>
                 <mat-menu #options="matMenu">
                     <button mat-menu-item>Create note</button>
-                    <button mat-menu-item>Note list</button>
+                    <button mat-menu-item (click)="showList()">Note list</button>
                 </mat-menu>
                 <mat-menu #exports="matMenu">
                     <button mat-menu-item>PDF file</button>

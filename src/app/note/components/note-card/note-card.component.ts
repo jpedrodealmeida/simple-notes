@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { User } from 'src/app/interfaces/user.interface';
 
@@ -20,9 +21,15 @@ export class NoteCardComponent implements OnInit {
 
   public editIcon = faPen;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    
+  ) { }
 
   ngOnInit(): void {
+  }
+  public deleteEmit(){
+    this.router.navigate(['/note/create'])
   }
 
 }

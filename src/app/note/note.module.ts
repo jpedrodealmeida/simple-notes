@@ -13,6 +13,7 @@ import { MainComponent } from './components/main/main.component';
 import { MatButtonModule } from '@angular/material/button';
 import { NoteCardComponent } from './components/note-card/note-card.component';
 import { NoteFormComponent } from './components/note-form/note-form.component';
+import { NoteRoutingModule } from './note-routing.module';
 
 
 
@@ -32,7 +33,8 @@ import { NoteFormComponent } from './components/note-form/note-form.component';
     MatIconModule,
     MatCardModule,
     FontAwesomeModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NoteRoutingModule
   ]
 })
 export class NoteModule { }
