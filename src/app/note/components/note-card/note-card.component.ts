@@ -9,7 +9,7 @@ import { User } from 'src/app/interfaces/user.interface';
   styleUrls: ['./note-card.component.scss']
 })
 export class NoteCardComponent implements OnInit {
-//"Sat, Aug 28 2021 12:34 PM"
+
   @Input("title") public title: string = "My title"
   @Input("category") public category: string = "Category"
   @Input("content") public content: string = "My text exemple"
@@ -29,7 +29,7 @@ export class NoteCardComponent implements OnInit {
   ngOnInit(): void {
   }
   public deleteEmit(){
-    this.router.navigate(['/note/create'])
+    
   }
 
 }

@@ -38,4 +38,7 @@ export class HeaderComponent implements OnInit {
   public showList(){
     this.router.navigate(['/'], {relativeTo: this.route})
   }
+  public goToCreate(){
+    this.router.navigate(['/note/create'])
+  }
 }
