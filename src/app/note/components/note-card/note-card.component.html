@@ -1,6 +1,6 @@
 <mat-card class="card-structure">
     <div class="note-title">
-        <h2 style="margin-top: 12px; font-size: 42px;">Work a lot</h2>
+        <h2 style="margin-top: 12px; font-size: 42px;">{{title}}</h2>
         <div class="actions">
             <div class="action-buttons">
                 <button mat-fab class="button" aria-label="Example icon button with a delete icon">
@@ -16,15 +16,14 @@
         </div>
     </div>
     <div class="note-category">
-        <span class="category">Office</span>
+        <span class="category">{{category}}</span>
     </div>
     <div class="note-body">
         <p style="font-size: 18px;">
-            I have a lot work for today
-            But my first task is clean my office
+            {{content}}
         </p>
     </div>
     <div class="note-footer">
-        <span>Sat, Aug 28 2021 12:34 PM </span>
+        <span>{{dateTime}}</span>
     </div>
 </mat-card>

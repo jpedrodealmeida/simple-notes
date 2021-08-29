@@ -1,7 +1,5 @@
 <h1>Note list</h1>
-<div class="list-structure">
-    <app-note-card></app-note-card>
-    <app-note-card></app-note-card>
-    <app-note-card></app-note-card>
- 
+<div class="list-structure" *ngFor="let task of taskList">
+    <app-note-card [title]="task.title" [date]="task.date"
+    [category]="task.category" [content]="task.content"></app-note-card>
 </div>

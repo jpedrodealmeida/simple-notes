@@ -1,5 +1,6 @@
 $base-color: #fba204;
 $base-text-color: #faf8f8;
+$second-color: #f15940;
 .card-structure{
     height: 222px;
     background: url(../../../../assets/back.png);
@@ -17,7 +18,7 @@ $base-text-color: #faf8f8;
     justify-content: end;
 }
 .category{
-    width: 100px;
+    width: auto;
     border-right: $base-color 180px solid;
     border-left: $base-color 12px solid;
     border-top: $base-color 12px solid;
@@ -41,6 +42,6 @@ $base-text-color: #faf8f8;
 
 .button{
     margin-right: 12px;
-    background-color: #f15940;
+    background-color: $second-color;
     color: $base-text-color;
 }
