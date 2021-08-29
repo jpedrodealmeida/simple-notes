@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -63,6 +65,7 @@ export class RegisterComponent implements OnInit {
   public save(){
     let user = this.getFormValue()
     this.userService.saveUser(user)
+    this.toastr.success('User save with success', 'Thanks :)')
     this.formClear()
     this.router.navigate(['/login'])
   }

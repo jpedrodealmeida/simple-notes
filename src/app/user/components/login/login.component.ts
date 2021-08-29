@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -30,10 +32,11 @@ export class LoginComponent implements OnInit {
   }
   public login(){
     let user: User = this.getFormValue()
-    if(user){
+    if(user && user.name && user.password){
       this.authService.userAuthenticate(user)
       this.router.navigate(['/noteList'])
-    }
+    }else
+      this.toastr.error('Try again, bro', 'Wrong credentials')
   }
 
   private getFormValue(): User{
