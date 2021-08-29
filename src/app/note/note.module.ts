@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { MatCardModule } from '@angular/material/card';
 import { NoteListComponent } from './components/note-list/note-list.component';
@@ -26,7 +27,8 @@ import { NoteCardComponent } from './components/note-card/note-card.component';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    FontAwesomeModule
   ]
 })
 export class NoteModule { }
