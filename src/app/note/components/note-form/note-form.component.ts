@@ -26,8 +26,8 @@ export class NoteFormComponent implements OnInit {
 
   private formInit(){
     this.form = this.fb.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
+      userName: ['', ],
+      category: ['', ],
       passwordConfirmation: ['', Validators.required]
     })
   }

@@ -1,26 +1,39 @@
 .form-structure{
-    display: grid;
     text-align: center;
     justify-content: center;
     width: 100%;
-    background: url(../../../../assets/back.png);
-    height: 100vh;
+
 }
 .card-structure{
     display: grid;
     grid-auto-flow: row;
-    width: 400px;
-    height: 330px;
     margin-top: 48px;
 }
 .login-input{
     width: 100%;
-}
-.logo{
-    text-align: center;
-    margin-bottom: 24px;
+    color: #fff;
+    border: 2px solid;
 }
 .save-button{
     background-color: #f3aa2c;
+    color: #fff;
+}
+.filed-set{
+    border-radius: 16px;
+    background: url(../../../../assets/back.png);
+    height: 380px;
+    padding: 64px 18px;
+}
+.box-title{
+    text-align: left;
+    font-size: 32px;
+}
+.grid-input{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 10%;
+    font-size: 22px;
+}
+.input-item{
     color: #fff;
 }
