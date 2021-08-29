@@ -1,24 +1,6 @@
 $base-text-color: #faf8f8;
 $second-color: #f15940;
-.note-menu{
-    background-color: #fba204;
-    color: $base-text-color;
-}
-.menu-action{
-   padding: 28px 14px; 
-}
+
 .main-body{
     margin: 24px;
-}
-.info-grid{
-    width: 100%;
-    text-align: end;
-    margin-right: 44px;
-    .mat-badge-content{
-        background-color: $second-color;
-    }
-}
-.notifications{
-    font-size: 18px;
-    cursor: pointer;
 }

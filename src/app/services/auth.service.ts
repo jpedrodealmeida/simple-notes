@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+
 import { User } from '../interfaces/user.interface';
 import { UserService } from './user.service';
 
@@ -8,6 +9,7 @@ import { UserService } from './user.service';
 export class AuthService {
 
   private isAuthenticated: boolean = false
+  public authUserEvent = new EventEmitter<boolean>()
 
   constructor(
     private userService: UserService
@@ -17,6 +19,7 @@ export class AuthService {
     let userAuth = localStorage.getItem('auth')
     if(userAuth)
       this.userAuthenticate(JSON.parse(userAuth))
+    this.authUserEvent.emit(this.isAuthenticated)
     return this.isAuthenticated
   }
   public userAuthenticate(user: User): void{
@@ -32,6 +35,7 @@ export class AuthService {
   }
   public logout(): void{
     this.isAuthenticated = false
+    this.authUserEvent.emit(false)
     localStorage.removeItem('auth')
   }
 

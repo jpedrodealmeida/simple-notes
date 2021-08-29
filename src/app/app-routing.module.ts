@@ -10,7 +10,7 @@ import { RegisterComponent } from './user/components/register/register.component
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: MainComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'noteList',
+    path: 'note',
     component: MainComponent,
     canActivate: [AuthGuard]
   },

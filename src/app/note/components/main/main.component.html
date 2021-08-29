@@ -1,47 +1,4 @@
 <div class="note-main-structure">
-    <div class="main-toobar">
-        <p>
-            <mat-toolbar class="note-menu">
-            <mat-toolbar-row>
-                <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-                    [matMenuTriggerFor]="notes">
-                    <mat-icon>menu</mat-icon>
-                </button>
-                <mat-menu #notes="matMenu">
-                    <button mat-menu-item [matMenuTriggerFor]="options">Notes</button>
-                    <button mat-menu-item [matMenuTriggerFor]="exports">Exports</button>
-                    <button mat-menu-item (click)="logout()">Logout</button>
-                </mat-menu>
-                <mat-menu #options="matMenu">
-                    <button mat-menu-item>Create note</button>
-                    <button mat-menu-item>Note list</button>
-                </mat-menu>
-                <mat-menu #exports="matMenu">
-                    <button mat-menu-item>PDF file</button>
-                </mat-menu>
-                <span class="example-spacer"></span>
-                <span>Simple note</span>
-            
-            
-            </mat-toolbar-row>
-          
-              <mat-toolbar-row>
-                <span>Filter</span>
-                <span class="example-spacer"></span>
-        
-                <div class="info-grid">
-                   <span matBadge="4" matBadgeOverlap="false"
-                    class="notifications" [matBadgeHidden]="hasNotification" 
-                    (click)="showNotifications()">Notifications</span> 
-
-
-
-                </div>
-                
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </p>
-    </div>
     <div class="main-body">
         <app-note-list></app-note-list>
     </div>

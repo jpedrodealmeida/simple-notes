@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     let user: User = this.getFormValue()
     if(user && user.name && user.password){
       this.authService.userAuthenticate(user)
-      this.router.navigate(['/noteList'])
+      this.router.navigate(['/note'])
     }else
       this.toastr.error('Sorry, try again', 'Wrong credentials')
   }
