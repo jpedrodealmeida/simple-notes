@@ -11,8 +11,7 @@
 }
 .login-input{
     width: 100%;
-    color: #fff;
-    border: 2px solid;
+  
 }
 .save-button{
     background-color: #f3aa2c;
@@ -34,6 +33,12 @@
     grid-gap: 10%;
     font-size: 22px;
 }
-.input-item{
-    color: #fff;
+
+.grid-content{
+    font-size: 18px;
+}
+::ng-deep .angular-editor-textarea{
+    font-size: 28px;
+    text-align: left;
+    min-height: 180px !important;
 }

@@ -7,6 +7,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatBadgeModule} from '@angular/material/badge';
 
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 import { MatCardModule } from '@angular/material/card';
 import { NoteListComponent } from './components/note-list/note-list.component';
 import { MainComponent } from './components/main/main.component';
@@ -39,7 +41,8 @@ import { MatInputModule } from '@angular/material/input';
     MatBadgeModule,
     NoteRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularEditorModule
   ]
 })
 export class NoteModule { }

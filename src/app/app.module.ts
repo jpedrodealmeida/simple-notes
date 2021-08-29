@@ -18,6 +18,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NoteRoutingModule } from './note/note-routing.module';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { NoteRoutingModule } from './note/note-routing.module';
     FontAwesomeModule,
     MatBadgeModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AngularEditorModule,
+    HttpClientModule
     
   ],
   providers: [],
