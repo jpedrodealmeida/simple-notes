@@ -25,16 +25,23 @@ export class NoteService {
   }
   private putNote(newNote: Note){
     let user = this.authService.getUserInformations()
+    let notesByUser: NoteStorage[] = this.getNotes()
     if(user){
-      let notes = this.getNotesByUserId(user.id)
-      let newNotes: Note[] = this.updateNote(notes, newNote)
-      // this.localStorageRegister(newNotes)
+      let found = notesByUser.find(userNotes => userNotes.userId == user.id)
+      if (found) {
+        notesByUser.map((userNote: NoteStorage) => {
+          if (userNote.userId == user.id) {
+            userNote.notes = this.updateNote(userNote.notes, newNote)
+          }
+        });
+      }
+      this.localStorageRegister(notesByUser)
     }
   }
-  private updateNote(oldNotes: Note[], newNote: Note): Note[]{
-    let index = oldNotes.findIndex(note => note.id == newNote.id)
-    oldNotes[index] = newNote
-    return oldNotes
+  private updateNote(notes: Note[], newNote: Note): Note[]{
+    let index = notes.findIndex(note => note.id == newNote.id)
+    notes[index] = newNote
+    return notes
   }
   private localStorageRegister(notes: NoteStorage[]){
     localStorage.setItem('notes', JSON.stringify(notes))
