@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { User } from '../interfaces/user.interface';
 import { AuthService } from '../services/auth.service';
 
 
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
   public hasNotification: boolean = true
   public showMenu: boolean = false
   public userIcon = faUser
+  public user!: User
 
   constructor(
     private authService: AuthService,
@@ -23,6 +25,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.authVerify()
+    this.getUserInfo()
+  }
+  private getUserInfo(){
+    this.user = this.authService.getUserInformations()
   }
 
   private authVerify(){
