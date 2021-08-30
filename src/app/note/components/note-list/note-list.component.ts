@@ -47,7 +47,7 @@ export class NoteListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== null ){
+      if(result){
         let user = this.authService.getUserInformations()
         if(user){
           this.noteService.deleteNote(this.selectedId)
