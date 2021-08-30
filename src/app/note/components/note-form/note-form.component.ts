@@ -36,7 +36,7 @@ editorConfig: AngularEditorConfig = {
     placeholder: 'Type your note here',
     defaultParagraphSeparator: '',
     defaultFontName: '',
-    defaultFontSize: '16px',
+    defaultFontSize: '12px',
     fonts: [
       {class: 'arial', name: 'Arial'},
       {class: 'times-new-roman', name: 'Times New Roman'},
