@@ -5,19 +5,21 @@
             <div class="grid-input">
                 <mat-form-field appearance="outline" class="login-input">
                     <mat-label>Note title</mat-label>
-                    <input matInput formControlName="userName" placeholder="Ex. Customer meeting" value="">
+                    <input matInput formControlName="title" placeholder="Ex. Customer meeting" value="">
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="login-input" >
                     <mat-label>Category</mat-label>
                     <input matInput formControlName="category" class="input-item"
                      placeholder="Ex. Study, Work" value="">
                 </mat-form-field>
-            </div>
-            
-            <angular-editor class="grid-content" [config]="editorConfig"></angular-editor>
-            
-            
+            </div>  
+            <angular-editor formControlName="content" class="grid-content" [config]="editorConfig"></angular-editor>   
         </form>
+        <div class="actions">
+            <button mat-button class="button-clean" (click)="clean()">Clean</button>
+            <button mat-raised-button class="button-save" (click)="save()">Save</button>
+        </div>
+        
     </fieldset>
 </div>
 <div *ngIf="show">

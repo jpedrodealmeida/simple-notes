@@ -1,3 +1,7 @@
+$base-color: #fba204;
+$base-text-color: #faf8f8;
+$second-color: #f15940;
+
 .form-structure{
     text-align: center;
     justify-content: center;
@@ -20,8 +24,6 @@
 .filed-set{
     border-radius: 16px;
     background: url(../../../../assets/back.png);
-    height: 380px;
-    padding: 64px 18px;
 }
 .box-title{
     text-align: left;
@@ -41,4 +43,19 @@
     font-size: 28px;
     text-align: left;
     min-height: 180px !important;
+}
+.actions{
+    text-align: end;
+    margin-top: 16px;
+}
+.button-save{
+    width: 250px;
+    color: $base-text-color;
+    background-color: $base-color;
+}
+.button-clean{
+    margin-right: 16px;
+    width: 250px;
+    color: $base-text-color;
+    background-color: $second-color;
 }

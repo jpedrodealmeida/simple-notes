@@ -27,10 +27,10 @@ editorConfig: AngularEditorConfig = {
     translate: 'yes',
     enableToolbar: true,
     showToolbar: true,
-    placeholder: 'Enter text here...',
+    placeholder: 'Type your note here',
     defaultParagraphSeparator: '',
     defaultFontName: '',
-    defaultFontSize: '',
+    defaultFontSize: '16px',
     fonts: [
       {class: 'arial', name: 'Arial'},
       {class: 'times-new-roman', name: 'Times New Roman'},
@@ -79,14 +79,18 @@ editorConfig: AngularEditorConfig = {
 
   private formInit(){
     this.form = this.fb.group({
-      userName: ['', ],
+      title: ['', ],
       category: ['', ],
       content: ['', Validators.required]
     })
   }
   private formClear(){
-    this.form.controls['userName'].patchValue('')
-    this.form.controls['password'].patchValue('')
-    this.form.controls['passwordConfirmation'].patchValue('')
+    this.form.controls['title'].patchValue('')
+    this.form.controls['category'].patchValue('')
+    this.form.controls['content'].patchValue('')
+  }
+  public save(){}
+  public clean(){
+    this.formClear()
   }
 }
