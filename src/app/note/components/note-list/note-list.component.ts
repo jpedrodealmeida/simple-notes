@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Note } from 'src/app/interfaces/note.interface';
 import { AuthService } from 'src/app/services/auth.service';
@@ -19,7 +20,9 @@ export class NoteListComponent implements OnInit {
     private authService: AuthService,
     private noteService: NoteService,
     public matDialog: MatDialog,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router,
+    private route: ActivatedRoute
    
   ) { }
 
@@ -29,13 +32,13 @@ export class NoteListComponent implements OnInit {
   private getNotes(){
     let user = this.authService.getUserInformations()
     if(user)
-      this.taskList = this.noteService.getNoteByUserId(user.id)
+      this.taskList = this.noteService.getNotesByUserId(user.id)
   }
   public deleteNote(value: number){
     this.openDialog(value)
   }
  
-  openDialog(noteId: number): void {
+  public openDialog(noteId: number): void {
     this.selectedId = noteId
     const dialogRef = this.matDialog.open(ModalComponent, {
       width: '350px',
@@ -47,13 +50,15 @@ export class NoteListComponent implements OnInit {
       if(result !== null ){
         let user = this.authService.getUserInformations()
         if(user){
-          this.noteService.deleteNote(this.selectedId, user.id)
+          this.noteService.deleteNote(this.selectedId)
           this.toastr.success('Successfully deleted', 'Removed')
           this.getNotes()
         }
-      }
-        
+      } 
     });
+  }
+  public editNote(value: number){
+    this.router.navigate(['../edit'], {relativeTo: this.route, queryParams: {id: value}});
   }
 
 }

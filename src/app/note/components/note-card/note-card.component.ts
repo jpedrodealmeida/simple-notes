@@ -21,8 +21,8 @@ export class NoteCardComponent implements OnInit {
   @Input("date") public dateTime!: Date
 
   @Output() public delete = new EventEmitter<number>()
-  @Output() public edit = new EventEmitter<User>()
-  @Output() public share = new EventEmitter<User>()
+  @Output() public edit = new EventEmitter<number>()
+  @Output() public share = new EventEmitter<number>()
 
   public editIcon = faPen;
 
@@ -36,6 +36,9 @@ export class NoteCardComponent implements OnInit {
   }
   public deleteEmit(){
     this.delete.emit(this.noteId)
+  }
+  public editEmit(){
+    this.edit.emit(this.noteId)
   }
 
 

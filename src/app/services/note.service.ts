@@ -28,13 +28,20 @@ export class NoteService {
       return JSON.parse(notes)
     return notes
   }
-  public getNoteByUserId(userId: number){
+  public getNotesByUserId(userId: number){
     let notes = this.getNotes()
     if(notes)
       notes = notes.filter((note: Note) => note.userId == userId)
     return notes
   }
-  public deleteNote(noteId: number, userId: number){
+  public getNoteById(userId: number, noteId: number){
+    let notes = this.getNotesByUserId(userId)
+    let note!: Note
+    if(notes)
+      note = notes.find((note: Note) => note.id == noteId)
+    return note
+  }
+  public deleteNote(noteId: number){
     let notes = this.getNotes()
     if(notes){
         let newNotes = notes.filter((note: Note) => note.id !== noteId)

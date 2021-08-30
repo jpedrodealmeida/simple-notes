@@ -1,6 +1,7 @@
 <h1>Note list</h1>
 <div class="list-structure" *ngFor="let task of taskList">
     <app-note-card [title]="task.title" [date]="task.date"
-    [category]="task.category" [content]="task.content"
-    [noteId]='task.id' (delete)="deleteNote($event)"></app-note-card>
+        [category]="task.category" [content]="task.content"
+        [noteId]='task.id' (delete)="deleteNote($event)"
+        (edit)="editNote($event)"></app-note-card>
 </div>

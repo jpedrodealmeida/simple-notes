@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
@@ -17,6 +17,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NoteFormComponent implements OnInit {
 
+  public noteToEdit!: Note
+  public isEdit: boolean = false
   show = false
 
 editorConfig: AngularEditorConfig = {
@@ -71,13 +73,40 @@ editorConfig: AngularEditorConfig = {
     private noteService: NoteService,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.formInit()
+    this.editVerify()
   }
-  showClick(){
+  private loadFormValues(note: Note){
+    if(note){
+      this.form.controls['title'].patchValue(note.title)
+      this.form.controls['category'].patchValue(note.category)
+      this.form.controls['content'].patchValue(note.content)
+    }
+  }
+  private editVerify(){
+    let url = this.router.url.includes('edit')
+      if(url)
+        this.getUrlParams()
+  }
+  private getUrlParams(){
+    this.route.queryParams.subscribe(value =>{
+      if(value)
+        this.getNoteData(value.id)
+    })
+  }
+  private getNoteData(noteId: number){
+    let user = this.authService.getUserInformations()
+    if(user){
+      this.noteToEdit = this.noteService.getNoteById(user.id, noteId)
+      this.loadFormValues(this.noteToEdit)
+    }
+  }
+  public showClick(){
     this.show = !this.show
   }
 

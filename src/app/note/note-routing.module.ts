@@ -21,6 +21,16 @@ const noteRoutes: Routes = [
         path: 'create',
         component: NoteFormComponent,
         canActivateChild: [AuthGuard],
+      },
+      {
+        path: ':id',
+        component: NoteFormComponent,
+        canActivateChild: [AuthGuard],
+      },
+      {
+        path: ':id/edit',
+        component: NoteFormComponent,
+        canActivateChild: [AuthGuard],
       }
     ]
   },
