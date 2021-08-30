@@ -22,9 +22,9 @@
         <span class="category">{{category}}</span>
     </div>
     <div class="note-body">
-        <p style="font-size: 18px;">
-            {{content}}
-        </p>
+        <div [innerHTML]="content | safeHtml">
+           
+        </div>
     </div>
     <div class="note-footer">
         <span>{{dateTime}}</span>

@@ -2,10 +2,7 @@ $base-color: #fba204;
 $base-text-color: #faf8f8;
 $second-color: #f15940;
 .card-structure{
-    height: 222px;
     background: url(../../../../assets/back.png);
-    display: grid;
-    grid-template-rows: 2fr 1fr 2fr;
 }
 .note-title{
     font-size: 24px;

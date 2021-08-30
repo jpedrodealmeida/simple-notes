@@ -20,6 +20,7 @@ import { NoteRoutingModule } from './note-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ModalComponent } from './components/modal/modal.component';
+import { SafeHtmlPipe } from '../pipes/safeHtml.pipe';
 
 
 
@@ -30,7 +31,8 @@ import { ModalComponent } from './components/modal/modal.component';
     MainComponent,
     NoteCardComponent,
     NoteFormComponent,
-    ModalComponent
+    ModalComponent,
+    SafeHtmlPipe
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 
@@ -22,14 +23,21 @@ export class NoteCardComponent implements OnInit {
   @Output() public share = new EventEmitter<number>()
 
   public editIcon = faPen;
+  public noteContent: any
 
   constructor(
     private router: Router,
-
-    
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
+    this.sanitizerContent(this.content)
+    
+  }
+  private sanitizerContent(content: string){
+    if(content){
+      this.noteContent = this.sanitizer.bypassSecurityTrustResourceUrl(this.content)
+    }
   }
   public deleteEmit(){
     this.delete.emit(this.noteId)
