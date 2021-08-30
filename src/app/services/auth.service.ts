@@ -10,6 +10,7 @@ export class AuthService {
 
   private isAuthenticated: boolean = false
   public authUserEvent = new EventEmitter<boolean>()
+  public loginTryEvent = new EventEmitter<boolean>()
 
   constructor(
     private userService: UserService
@@ -27,7 +28,10 @@ export class AuthService {
     if(storageUser){
       if(user.password == storageUser.password)
         this.setUserCredentials(storageUser)
-    }
+      else
+        this.loginTryEvent.emit(true)
+    }else
+      this.loginTryEvent.emit(true)
   }
   private setUserCredentials(user: User): void{
     this.isAuthenticated = true

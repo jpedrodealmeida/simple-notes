@@ -23,6 +23,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formInit()
+    this.loginAttemptsListen()
+  }
+  private loginAttemptsListen(){
+    this.authService.loginTryEvent.subscribe(event =>{
+      if(event)
+        this.toastr.error('Sorry, try again', 'Wrong credentials')
+    })
   }
   private formInit(){
     this.form = this.fb.group({
