@@ -22,3 +22,22 @@ $second-color: #f15940;
     font-size: 18px;
     cursor: pointer;
 }
+.user-grid{
+    width: 38px;
+    height: 38px;
+    border-radius: 32px;
+    background-color: $second-color;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+.tool-actions{
+    width: 100%;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    justify-content: end;
+    justify-items: center;
+    align-items: end;
+    margin-right: 44px;
+    cursor: pointer;
+}

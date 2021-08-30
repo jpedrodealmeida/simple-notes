@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../services/auth.service';
 
 
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   public hasNotification: boolean = true
   public showMenu: boolean = false
+  public userIcon = faUser
 
   constructor(
     private authService: AuthService,

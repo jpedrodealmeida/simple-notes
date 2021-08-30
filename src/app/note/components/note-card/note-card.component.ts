@@ -1,10 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { Note } from 'src/app/interfaces/note.interface';
-import { User } from 'src/app/interfaces/user.interface';
-import { ModalComponent } from '../modal/modal.component';
+
 
 @Component({
   selector: 'app-note-card',
