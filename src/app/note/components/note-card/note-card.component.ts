@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faPen } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -23,6 +23,7 @@ export class NoteCardComponent implements OnInit {
   @Output() public share = new EventEmitter<number>()
 
   public editIcon = faPen;
+  public showIcon = faEye
   public noteContent: any
 
   constructor(
