@@ -17,6 +17,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NoteFormComponent implements OnInit {
 
+  public titleBox: string = "Create Note"
   public noteToEdit!: Note
   public isEdit: boolean = false
   show = false
@@ -90,8 +91,10 @@ editorConfig: AngularEditorConfig = {
   }
   private editVerify(){
     let url = this.router.url.includes('edit')
-      if(url)
+      if(url){
         this.getUrlParams()
+        this.titleBox = "Edit Note"
+      }
   }
   private getUrlParams(){
     this.route.queryParams.subscribe(value =>{
