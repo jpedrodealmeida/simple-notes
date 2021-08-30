@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.router.navigate(['./create'], {relativeTo: this.route}) //change to ./list
+    this.router.navigate(['./list'], {relativeTo: this.route}) //change to ./list
   }
   public logout(){
     this.authService.logout()

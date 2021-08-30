@@ -1,0 +1,12 @@
+.modal-structure{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.actions{
+    margin-top: 12px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px;
+}

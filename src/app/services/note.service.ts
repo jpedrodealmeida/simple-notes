@@ -34,5 +34,12 @@ export class NoteService {
       notes = notes.filter((note: Note) => note.userId == userId)
     return notes
   }
+  public deleteNote(noteId: number, userId: number){
+    let notes = this.getNotes()
+    if(notes){
+        let newNotes = notes.filter((note: Note) => note.id !== noteId)
+        this.postNote(newNotes)
+    }
+  }
 
 }

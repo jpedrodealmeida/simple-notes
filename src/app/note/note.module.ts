@@ -6,6 +6,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatBadgeModule} from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
@@ -18,6 +19,7 @@ import { NoteFormComponent } from './components/note-form/note-form.component';
 import { NoteRoutingModule } from './note-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -27,7 +29,8 @@ import { MatInputModule } from '@angular/material/input';
     NoteListComponent,
     MainComponent,
     NoteCardComponent,
-    NoteFormComponent
+    NoteFormComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +45,10 @@ import { MatInputModule } from '@angular/material/input';
     NoteRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularEditorModule
-  ]
+    AngularEditorModule,
+    MatDialogModule
+    
+  ],
+  entryComponents: [ModalComponent]
 })
 export class NoteModule { }
