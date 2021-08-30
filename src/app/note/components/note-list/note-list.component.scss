@@ -1,5 +1,22 @@
+$base-color: #fba204;
+$base-text-color: #faf8f8;
+$second-color: #f15940;
 .list-structure{
     display: grid;
     grid-auto-flow: row;
     margin: 22px 14px;
+}
+.filed-set{
+    border-radius: 16px;
+    min-height: 256px;
+}
+.empty-state{
+    color: rgb(36, 35, 35);
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    margin-top: 68px;
+}
+.box-title{
+    font-size: 32px;
 }

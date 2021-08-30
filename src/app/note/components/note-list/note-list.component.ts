@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faSadCry } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { Note } from 'src/app/interfaces/note.interface';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,6 +16,7 @@ import { ModalDetailsComponent } from './modal-details/modal-details.component';
 })
 export class NoteListComponent implements OnInit {
 
+  public emptyStateIcon = faSadCry
   public selectedId!: number
   public taskList!: Note[]
   constructor(
@@ -32,8 +34,10 @@ export class NoteListComponent implements OnInit {
   }
   private getNotes(){
     let user = this.authService.getUserInformations()
-    if(user)
+    if(user){
       this.taskList = this.noteService.getNotesByUserId(user.id)
+
+    }
   }
   public deleteNote(value: number){
     this.openDeleteDialog(value)
