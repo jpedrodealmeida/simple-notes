@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ModalComponent } from './components/modal/modal.component';
 import { SafeHtmlPipe } from '../pipes/safeHtml.pipe';
+import { ModalDetailsComponent } from './components/note-list/modal-details/modal-details.component';
 
 
 
@@ -32,7 +33,8 @@ import { SafeHtmlPipe } from '../pipes/safeHtml.pipe';
     NoteCardComponent,
     NoteFormComponent,
     ModalComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ModalDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +53,6 @@ import { SafeHtmlPipe } from '../pipes/safeHtml.pipe';
     MatDialogModule
     
   ],
-  entryComponents: [ModalComponent]
+  entryComponents: [ModalComponent, ModalDetailsComponent]
 })
 export class NoteModule { }

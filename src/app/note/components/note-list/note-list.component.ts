@@ -6,6 +6,7 @@ import { Note } from 'src/app/interfaces/note.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { NoteService } from 'src/app/services/note.service';
 import { ModalComponent } from '../modal/modal.component';
+import { ModalDetailsComponent } from './modal-details/modal-details.component';
 
 @Component({
   selector: 'app-note-list',
@@ -35,10 +36,10 @@ export class NoteListComponent implements OnInit {
       this.taskList = this.noteService.getNotesByUserId(user.id)
   }
   public deleteNote(value: number){
-    this.openDialog(value)
+    this.openDeleteDialog(value)
   }
  
-  public openDialog(noteId: number): void {
+  private openDeleteDialog(noteId: number): void {
     this.selectedId = noteId
     const dialogRef = this.matDialog.open(ModalComponent, {
       width: '350px',
@@ -59,6 +60,18 @@ export class NoteListComponent implements OnInit {
   }
   public editNote(value: number){
     this.router.navigate(['../edit'], {relativeTo: this.route, queryParams: {id: value}});
+  }
+  public showNote(value: number){
+    this.openDetailsDialog(value)
+  }
+  private openDetailsDialog(noteId: number): void {
+    this.selectedId = noteId
+    const dialogRef = this.matDialog.open(ModalDetailsComponent, {
+      width: '950px',
+      height: '650px',
+      data: {id: noteId}
+    });
+
   }
 
 }

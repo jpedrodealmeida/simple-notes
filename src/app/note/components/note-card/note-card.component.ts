@@ -20,6 +20,7 @@ export class NoteCardComponent implements OnInit {
 
   @Output() public delete = new EventEmitter<number>()
   @Output() public edit = new EventEmitter<number>()
+  @Output() public show = new EventEmitter<number>()
   @Output() public share = new EventEmitter<number>()
 
   public editIcon = faPen;
@@ -27,7 +28,6 @@ export class NoteCardComponent implements OnInit {
   public noteContent: any
 
   constructor(
-    private router: Router,
     private sanitizer: DomSanitizer
   ) { }
 
@@ -45,6 +45,9 @@ export class NoteCardComponent implements OnInit {
   }
   public editEmit(){
     this.edit.emit(this.noteId)
+  }
+  public showEmit(){
+    this.show.emit(this.noteId)
   }
 
 
