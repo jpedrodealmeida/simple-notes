@@ -28,7 +28,7 @@ export class NoteService {
     if(user){
       let notes = this.getNotesByUserId(user.id)
       let newNotes: Note[] = this.updateNote(notes, newNote)
-      this.localStorageRegister(newNotes)
+      // this.localStorageRegister(newNotes)
     }
   }
   private updateNote(oldNotes: Note[], newNote: Note): Note[]{
@@ -36,7 +36,7 @@ export class NoteService {
     oldNotes[index] = newNote
     return oldNotes
   }
-  private localStorageRegister(notes: Note[]){
+  private localStorageRegister(notes: NoteStorage[]){
     localStorage.setItem('notes', JSON.stringify(notes))
   }
   private postNote(note: Note): void{
@@ -53,6 +53,7 @@ export class NoteService {
     if (found) {
       notesByUser.map((userNote: NoteStorage) => {
         if (userNote.userId == user.id) {
+          noteToSave.id = this.noteIdGenerete(userNote.notes)
           userNote.notes.push(noteToSave)
         }
       });
@@ -61,6 +62,14 @@ export class NoteService {
       notesByUser.push(userNote)
     }
     return notesByUser
+  }
+  private noteIdGenerete(notes: Note[]): number{
+    let listId: number[] = []
+    notes.forEach(note =>{
+        listId.push(note.id)
+    })
+    let id = Math.max.apply(null, listId)
+    return ++id
   }
   private createNoteObjToRegister(noteToSave: Note): NoteStorage[]{
     let userInfo = this.authService.getUserInformations()
@@ -109,12 +118,22 @@ export class NoteService {
         note = found
     return note
   }
-  public deleteNote(noteId: number){
-    let notes = this.getNotes()
-    if(notes){
-        let newNotes = notes.filter((note: Note) => note.id !== noteId)
-        this.localStorageRegister(newNotes)
+  public deleteNote(noteId: number) {
+    let user = this.authService.getUserInformations()
+    let notesByUser: NoteStorage[] = this.getNotes()
+    let notes: Note[] = this.getNotesByUserId(user.id)
+    if (notes) {
+      notes = notes.filter((note: Note) => note.id !== noteId)
+      let found = notesByUser.find(userNotes => userNotes.userId == user.id)
+      if (found) {
+        notesByUser.map((userNote: NoteStorage) => {
+          if (userNote.userId == user.id) {
+            userNote.notes = notes
+          }
+        });
+      }
     }
+    this.localStorageRegister(notesByUser)
   }
 
 }
