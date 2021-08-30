@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from 'src/app/interfaces/note.interface';
+import { AuthService } from 'src/app/services/auth.service';
+import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-note-list',
@@ -8,37 +10,18 @@ import { Note } from 'src/app/interfaces/note.interface';
 })
 export class NoteListComponent implements OnInit {
 
-  public taskList: Note[] = 
-  [
-    {
-      id: 0,
-      title: 'Clean bed room',
-      category: 'Clean',
-      content: 'Thats my first tast to test here',
-      date: new Date(),
-      userId: 0
-    },
-    {
-      id: 1,
-      title: 'Sing with my girl',
-      category: 'Happy moment',
-      content: 'The only time of happiness about my life',
-      date: new Date(),
-      userId: 0
-    },
-    {
-      id: 2,
-      title: 'Study to english test',
-      category: 'Study',
-      content: 'My last test of year in my hight school',
-      date: new Date(),
-      userId: 0
-    }
-  ]
-
-  constructor() { }
+  public taskList!: Note[]
+  constructor(
+    private authService: AuthService,
+    private noteService: NoteService
+  ) { }
 
   ngOnInit(): void {
+    this.getNotes()
   }
-
+  private getNotes(){
+    let user = this.authService.getUserInformations()
+    if(user)
+      this.taskList = this.noteService.getNoteByUserId(user.id)
+  }
 }

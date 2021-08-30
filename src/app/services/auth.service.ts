@@ -26,7 +26,7 @@ export class AuthService {
     let storageUser = this.userService.getUserByName(user.name) || undefined
     if(storageUser){
       if(user.password == storageUser.password)
-        this.setUserCredentials(user)
+        this.setUserCredentials(storageUser)
     }
   }
   private setUserCredentials(user: User): void{

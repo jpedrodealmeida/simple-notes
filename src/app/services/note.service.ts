@@ -28,5 +28,11 @@ export class NoteService {
       return JSON.parse(notes)
     return notes
   }
+  public getNoteByUserId(userId: number){
+    let notes = this.getNotes()
+    if(notes)
+      notes = notes.filter((note: Note) => note.userId == userId)
+    return notes
+  }
 
 }
