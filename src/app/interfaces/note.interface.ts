@@ -3,5 +3,6 @@ export interface Note{
     title: string,
     category: string,
     content: string,
-    date: Date
+    date: Date,
+    userId: number
 }

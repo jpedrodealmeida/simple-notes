@@ -15,21 +15,24 @@ export class NoteListComponent implements OnInit {
       title: 'Clean bed room',
       category: 'Clean',
       content: 'Thats my first tast to test here',
-      date: new Date()
+      date: new Date(),
+      userId: 0
     },
     {
       id: 1,
       title: 'Sing with my girl',
       category: 'Happy moment',
       content: 'The only time of happiness about my life',
-      date: new Date()
+      date: new Date(),
+      userId: 0
     },
     {
       id: 2,
       title: 'Study to english test',
       category: 'Study',
       content: 'My last test of year in my hight school',
-      date: new Date()
+      date: new Date(),
+      userId: 0
     }
   ]
 

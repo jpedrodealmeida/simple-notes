@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { NoteService } from 'src/app/services/note.service';
+import { Note } from 'src/app/interfaces/note.interface';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -65,7 +68,8 @@ editorConfig: AngularEditorConfig = {
   
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private noteService: NoteService,
+    private authService: AuthService,
     private router: Router,
     private toastr: ToastrService
   ) { }
@@ -89,7 +93,29 @@ editorConfig: AngularEditorConfig = {
     this.form.controls['category'].patchValue('')
     this.form.controls['content'].patchValue('')
   }
-  public save(){}
+  public save(){
+    let note = this.getFormValue()
+    this.noteService.saveNote(note)
+    this.toastr.success('Save with success', 'Note')
+    this.clean()
+    this.router.navigate(['/'])
+  }
+  private getFormValue(){
+    let user = this.getUserInfo()
+    let note: Note = {
+      id: 0,
+      title: this.form.controls['title'].value,
+      category: this.form.controls['category'].value,
+      content: this.form.controls['content'].value,
+      userId: user.id,
+      date: new Date()
+    }
+    return note
+  }
+  private getUserInfo(){
+    return this.authService.getUserInformations()
+  }
+  
   public clean(){
     this.formClear()
   }

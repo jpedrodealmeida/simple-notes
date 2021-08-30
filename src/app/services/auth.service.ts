@@ -33,6 +33,12 @@ export class AuthService {
     this.isAuthenticated = true
     localStorage.setItem('auth', JSON.stringify(user))
   }
+  public getUserInformations(): any{
+    let userAuth = localStorage.getItem('auth')
+      if(userAuth)
+        return JSON.parse(userAuth)
+      return userAuth
+  }
   public logout(): void{
     this.isAuthenticated = false
     this.authUserEvent.emit(false)
