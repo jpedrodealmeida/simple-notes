@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Note } from 'src/app/interfaces/note.interface';
 import { NoteService } from 'src/app/services/note.service';
 import { DialogData } from '../../modal/modal.component';
 
@@ -10,6 +11,8 @@ import { DialogData } from '../../modal/modal.component';
 })
 export class ModalDetailsComponent implements OnInit {
 
+  public note!: Note
+
   constructor(
     public dialogRef: MatDialogRef<ModalDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -17,8 +20,12 @@ export class ModalDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.getNote()
   }
-  closeModal() {
+  private getNote(): void{
+    this.note = this.noteService.getNoteById(this.data.id)
+  }
+  public closeModal() {
     this.dialogRef.close(null);
   }
 

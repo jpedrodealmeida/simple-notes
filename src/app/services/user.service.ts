@@ -35,7 +35,7 @@ export class UserService {
    * @description Method to get users in local storage
    * @returns Array of User  [{id: number, name: string, password: string}] or null
    */
-  private getUsers(): User[] | null{
+  public getUsers(): User[] | null{
     let userFromStorage = localStorage.getItem('users')
     if(userFromStorage)
       return JSON.parse(userFromStorage)

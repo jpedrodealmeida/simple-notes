@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { NoteStorage } from '../interfaces/note-storage.interface';
 import { Note } from '../interfaces/note.interface';
 import { AuthService } from './auth.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,8 @@ export class NoteService {
 
   
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) { }
 
   public saveNote(note: Note, isEdit?: boolean) {
@@ -26,7 +29,6 @@ export class NoteService {
       let newNotes: Note[] = this.updateNote(notes, newNote)
       this.localStorageRegister(newNotes)
     }
-    //TODO
   }
   private updateNote(oldNotes: Note[], newNote: Note): Note[]{
     let index = oldNotes.findIndex(note => note.id == newNote.id)
@@ -37,6 +39,7 @@ export class NoteService {
     localStorage.setItem('notes', JSON.stringify(notes))
   }
   private postNote(note: Note){
+    this.createNoteObjToRegister(note)
     let notes = this.getNotes()
       if (notes) {
         note.id = notes.length
@@ -45,6 +48,14 @@ export class NoteService {
       else
         notes = [note]
       this.localStorageRegister(notes)
+  }
+  private createNoteObjToRegister(noteToSave: Note){
+    let users = this.userService.getUsers()
+    let note: NoteStorage[] = []
+    users?.forEach(user => {
+      note.push({userId: user.id, notes: [noteToSave], shared: null})
+    })
+    debugger
   }
   public getNotes(): any{
     let notes = localStorage.getItem('notes')

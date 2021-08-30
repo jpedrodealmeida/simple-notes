@@ -1,1 +1,14 @@
-<p>modal-details works!</p>
+<div class="card-structure">
+    <div class="note-title">
+        <h2 class="title">{{note?.title}}</h2>
+    </div>
+    <div class="note-category">
+        <span class="category">{{note?.category}}</span>
+    </div>
+    <div class="note-body">
+        <div [innerHTML]="note.content | safeHtml"> </div>
+    </div>
+    <div class="note-footer">
+        <span>{{note?.date}}</span>
+    </div>
+<div>
