@@ -72,10 +72,10 @@ editorConfig: AngularEditorConfig = {
   constructor(
     private fb: FormBuilder,
     private noteService: NoteService,
-    private authService: AuthService,
     private router: Router,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -92,8 +92,10 @@ editorConfig: AngularEditorConfig = {
   private editVerify(){
     let url = this.router.url.includes('edit')
       if(url){
-        this.getUrlParams()
+        this.isEdit = true
         this.titleBox = "Edit Note"
+        this.getUrlParams()
+        
       }
   }
   private getUrlParams(){
@@ -103,11 +105,8 @@ editorConfig: AngularEditorConfig = {
     })
   }
   private getNoteData(noteId: number){
-    let user = this.authService.getUserInformations()
-    if(user){
-      this.noteToEdit = this.noteService.getNoteById(user.id, noteId)
+      this.noteToEdit = this.noteService.getNoteById(noteId)
       this.loadFormValues(this.noteToEdit)
-    }
   }
   public showClick(){
     this.show = !this.show
@@ -127,7 +126,7 @@ editorConfig: AngularEditorConfig = {
   }
   public save(){
     let note = this.getFormValue()
-    this.noteService.saveNote(note)
+    this.noteService.saveNote(note, this.isEdit)
     this.toastr.success('Save with success', 'Note')
     this.clean()
     this.router.navigate(['/'])

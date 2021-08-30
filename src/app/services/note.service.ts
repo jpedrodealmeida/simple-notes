@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Note } from '../interfaces/note.interface';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,20 +8,32 @@ import { Note } from '../interfaces/note.interface';
 export class NoteService {
 
   
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
-  public saveNote(note: Note){
-    let notes = this.getNotes()
-    if(notes){
-      note.id = notes.length
-      notes.push(note)
+  public saveNote(note: Note, isEdit?: boolean) {
+    if (!isEdit) {
+      this.postNote(note)
+    }else{
+      this.putNote()
     }
-    else
-      notes = [note]
-    this.postNote(notes)
   }
-  private postNote(notes: Note[]){
+  private putNote(){
+    //TODO
+  }
+  private localStorageRegister(notes: Note[]){
     localStorage.setItem('notes', JSON.stringify(notes))
+  }
+  private postNote(note: Note){
+    let notes = this.getNotes()
+      if (notes) {
+        note.id = notes.length
+        notes.push(note)
+      }
+      else
+        notes = [note]
+      this.localStorageRegister(notes)
   }
   public getNotes(): any{
     let notes = localStorage.getItem('notes')
@@ -34,18 +47,22 @@ export class NoteService {
       notes = notes.filter((note: Note) => note.userId == userId)
     return notes
   }
-  public getNoteById(userId: number, noteId: number){
-    let notes = this.getNotesByUserId(userId)
+  public getNoteById(noteId: number){
+    let user = this.authService.getUserInformations()
     let note!: Note
-    if(notes)
-      note = notes.find((note: Note) => note.id == noteId)
+    if(user){
+      let notes = this.getNotesByUserId(user.id)
+      if(notes)
+        note = notes.find((note: Note) => note.id == noteId)
+    }
     return note
+    
   }
   public deleteNote(noteId: number){
     let notes = this.getNotes()
     if(notes){
         let newNotes = notes.filter((note: Note) => note.id !== noteId)
-        this.postNote(newNotes)
+        this.localStorageRegister(newNotes)
     }
   }
 
