@@ -134,7 +134,7 @@ editorConfig: AngularEditorConfig = {
   private getFormValue(){
     let user = this.getUserInfo()
     let note: Note = {
-      id: 0,
+      id: this.getNoteId(),
       title: this.form.controls['title'].value,
       category: this.form.controls['category'].value,
       content: this.form.controls['content'].value,
@@ -142,6 +142,11 @@ editorConfig: AngularEditorConfig = {
       date: new Date()
     }
     return note
+  }
+  private getNoteId(): number{
+    if(!this.isEdit)
+      return 0
+    return this.noteToEdit.id
   }
   private getUserInfo(){
     return this.authService.getUserInformations()

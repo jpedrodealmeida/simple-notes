@@ -16,11 +16,22 @@ export class NoteService {
     if (!isEdit) {
       this.postNote(note)
     }else{
-      this.putNote()
+      this.putNote(note)
     }
   }
-  private putNote(){
+  private putNote(newNote: Note){
+    let user = this.authService.getUserInformations()
+    if(user){
+      let notes = this.getNotesByUserId(user.id)
+      let newNotes: Note[] = this.updateNote(notes, newNote)
+      this.localStorageRegister(newNotes)
+    }
     //TODO
+  }
+  private updateNote(oldNotes: Note[], newNote: Note): Note[]{
+    let index = oldNotes.findIndex(note => note.id == newNote.id)
+    oldNotes[index] = newNote
+    return oldNotes
   }
   private localStorageRegister(notes: Note[]){
     localStorage.setItem('notes', JSON.stringify(notes))
