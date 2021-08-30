@@ -135,13 +135,18 @@ editorConfig: AngularEditorConfig = {
     let user = this.getUserInfo()
     let note: Note = {
       id: this.getNoteId(),
-      title: this.form.controls['title'].value,
-      category: this.form.controls['category'].value,
-      content: this.form.controls['content'].value,
+      title: this.inputEmptyVerify(this.form.controls['title'].value, 'Title'),
+      category: this.inputEmptyVerify(this.form.controls['category'].value, 'Category'),
+      content: this.inputEmptyVerify(this.form.controls['content'].value, 'Content'),
       userId: user.id,
       date: new Date()
     }
     return note
+  }
+  private inputEmptyVerify(value: string, title: string): string{
+    if(value)
+      return value
+    return `Default-${title}`
   }
   private getNoteId(): number{
     if(!this.isEdit)
