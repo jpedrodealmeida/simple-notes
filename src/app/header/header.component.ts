@@ -33,6 +33,8 @@ export class HeaderComponent implements OnInit {
 
   private authVerify(){
     this.authService.authUserEvent.subscribe(isAuth =>{
+      if(isAuth)
+       this.getUserInfo()
       this.showMenu = isAuth
     })
   }
