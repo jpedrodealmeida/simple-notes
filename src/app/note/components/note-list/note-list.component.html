@@ -1,14 +1,14 @@
 <div class="main">
     <fieldset class="filed-set">
         <legend class="box-title">Note List</legend>
-        <div class="list-structure" *ngFor="let task of taskList">
+        <div class="list-structure" *ngFor="let task of noteList">
             <app-note-card [title]="task.title" [date]="task.date"
                 [category]="task.category" [content]="task.content"
                 [noteId]='task.id' (delete)="deleteNote($event)"
                 (edit)="editNote($event)" (show)="showNote($event)"
                 (share)="shareNote($event)"></app-note-card>
         </div>
-        <div class="empty-state" *ngIf="!taskList?.length">
+        <div class="empty-state" *ngIf="!noteList?.length">
             <h1>
                 Sorry, you don't have registered notes yet...
             </h1>
@@ -19,14 +19,14 @@
     <div class="share-grid">
         <fieldset class="filed-set">
             <legend class="box-title">Shared List</legend>
-            <div class="list-structure" *ngFor="let task of taskList">
+            <div class="list-structure" *ngFor="let task of sharedList">
                 <app-note-card [title]="task.title" [date]="task.date"
                     [category]="task.category" [content]="task.content"
                     [noteId]='task.id' (delete)="deleteNote($event)"
                     (edit)="editNote($event)" (show)="showNote($event)"
-                    (share)="shareNote($event)"></app-note-card>
+                    (share)="shareNote($event)" [isShared]="true"></app-note-card>
             </div>
-            <div class="empty-state" *ngIf="!taskList?.length">
+            <div class="empty-state" *ngIf="!sharedList?.length">
                 <h1>
                     Sorry, no one has shared anything with you yet...
                 </h1>

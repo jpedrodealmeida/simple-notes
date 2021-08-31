@@ -109,6 +109,21 @@ export class NoteService {
     }
     return noteList
   }
+  public getNotesSharedByUserId(userId: number): Note[]{
+    let notesByUser = this.getNotes()
+    let noteList!: Note[]
+    let temp
+    if(notesByUser){
+      notesByUser.forEach((userNote: NoteStorage) => {
+        if(userNote.userId == userId){
+          temp = userNote.shared
+          if(temp)
+            noteList = temp
+        }
+      });
+    }
+    return noteList
+  }
   public getNoteById(noteId: number){
     let user = this.authService.getUserInformations()
     let note!: Note

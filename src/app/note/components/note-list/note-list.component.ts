@@ -19,7 +19,8 @@ export class NoteListComponent implements OnInit {
 
   public emptyStateIcon = faSadCry
   public selectedId!: number
-  public taskList!: Note[]
+  public noteList!: Note[]
+  public sharedList!: Note[]
   constructor(
     private authService: AuthService,
     private noteService: NoteService,
@@ -32,11 +33,19 @@ export class NoteListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getNotes()
+    this.getSharedNotes()
   }
   private getNotes(){
     let user = this.authService.getUserInformations()
     if(user){
-      this.taskList = this.noteService.getNotesByUserId(user.id)
+      this.noteList = this.noteService.getNotesByUserId(user.id)
+
+    }
+  }
+  private getSharedNotes(){
+    let user = this.authService.getUserInformations()
+    if(user){
+      this.sharedList = this.noteService.getNotesSharedByUserId(user.id)
 
     }
   }

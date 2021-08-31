@@ -17,6 +17,7 @@ export class NoteCardComponent implements OnInit {
   @Input("category") public category: string = "Category"
   @Input("content") public content: string = "My text exemple"
   @Input("date") public dateTime!: Date
+  @Input("isShared") public isShared: boolean = false
 
   @Output() public delete = new EventEmitter<number>()
   @Output() public edit = new EventEmitter<number>()

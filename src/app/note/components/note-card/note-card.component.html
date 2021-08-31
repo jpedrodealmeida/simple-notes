@@ -4,19 +4,23 @@
         <div class="actions">
             <div class="action-buttons">
                 <button mat-fab class="button" (click)="deleteEmit()"
-                 aria-label="Example icon button with a delete icon">
+                 aria-label="Example icon button with a delete icon"
+                 [disabled]="isShared">
                     <mat-icon>delete</mat-icon>
                   </button>
                   <button mat-fab class="button" (click)="showEmit()"
-                 aria-label="Example icon button with a delete icon">
+                 aria-label="Example icon button with a delete icon"
+                 [disabled]="isShared">
                     <fa-icon style="font-size: 18px;" [icon]="showIcon"></fa-icon>
                   </button>
                 <button mat-fab class="button" (click)="editEmit()"
-                 aria-label="Example icon button with a delete icon">
+                 aria-label="Example icon button with a delete icon"
+                 [disabled]="isShared">
                     <fa-icon style="font-size: 18px;" [icon]="editIcon"></fa-icon>
                   </button>
                   <button mat-fab class="button" (click)="shareEmit()" 
-                  aria-label="Example icon-button with share icon">
+                  aria-label="Example icon-button with share icon"
+                  [disabled]="isShared">
                     <mat-icon>share</mat-icon>
                   </button>
               </div>
