@@ -20,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NoteRoutingModule } from './note/note-routing.module';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http';
+import { config } from 'rxjs';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import { HttpClientModule } from '@angular/common/http';
     FontAwesomeModule,
     MatBadgeModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      preventDuplicates: false,
+    }),
     AngularEditorModule,
     HttpClientModule
     
