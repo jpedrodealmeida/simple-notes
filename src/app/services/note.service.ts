@@ -206,8 +206,5 @@ export class NoteService {
       noteFound = found
     return noteFound
   }
-  private createObjToShare(){
-
-  }
 
 }
