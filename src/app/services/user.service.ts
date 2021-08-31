@@ -41,6 +41,12 @@ export class UserService {
       return JSON.parse(userFromStorage)
     return null
   }
+     /**
+   * @author Joao Pedro
+   * @description Method to get users by name
+   * @param name String user name
+   * @returns Array of User {id: number, name: string, password: string} or undefined
+   */
   public getUserByName(name: string): User | undefined{
     let list = this.getUsers()
     if(list !== null){

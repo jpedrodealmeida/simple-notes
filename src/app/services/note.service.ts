@@ -19,7 +19,12 @@ export class NoteService {
     private userService: UserService
   ) { }
 
-  public saveNote(note: Note, isEdit?: boolean) {
+     /**
+   * @author Joao Pedro
+   * @description Method to save note after create or edit
+   * @param note Note Object 
+   */
+  public saveNote(note: Note, isEdit?: boolean): void {
     if (!isEdit) {
       this.postNote(note)
     }else{
@@ -93,12 +98,23 @@ export class NoteService {
     })
     return noteList
   }
+     /**
+   * @author Joao Pedro
+   * @description Method to get all users with all notes
+   * @returns Array of NoteStorage object
+   */
   public getNotes(): any{
     let notes = localStorage.getItem('notes')
     if(notes)
       return JSON.parse(notes)
     return notes
   }
+     /**
+   * @author Joao Pedro
+   * @description Method to get all notes bu user id
+   * @param userId Number 
+   * @returns Array of Note object
+   */
   public getNotesByUserId(userId: number): Note[]{
     let notesByUser = this.getNotes()
     let noteList!: Note[]
@@ -111,6 +127,12 @@ export class NoteService {
     }
     return noteList
   }
+     /**
+   * @author Joao Pedro
+   * @description Method to get all notes shared to user
+   * @param userId Number
+   * @returns Array of Note object
+   */
   public getNotesSharedByUserId(userId: number): Note[]{
     let notesByUser = this.getNotes()
     let noteList!: Note[]
@@ -126,7 +148,13 @@ export class NoteService {
     }
     return noteList
   }
-  public getNoteById(noteId: number){
+     /**
+   * @author Joao Pedro
+   * @description Method to get note by note id
+   * @param noteId: number
+   * @returns Note object
+   */
+  public getNoteById(noteId: number): Note{
     let user = this.authService.getUserInformations()
     let note!: Note
     if(user){
@@ -136,7 +164,13 @@ export class NoteService {
     }
     return note  
   }
-  public getNoteSharedById(noteId: number){
+     /**
+   * @author Joao Pedro
+   * @description Method to get a note shared by id
+   * @param noteId: number
+   * @returns Note object
+   */
+  public getNoteSharedById(noteId: number): Note{
     let user = this.authService.getUserInformations()
     let note!: Note
     if(user){
@@ -153,7 +187,12 @@ export class NoteService {
         note = found
     return note
   }
-  public deleteNote(noteId: number) {
+     /**
+   * @author Joao Pedro
+   * @description Method to detele a note
+   * @param noteId: number
+   */
+  public deleteNote(noteId: number): void {
     let user = this.authService.getUserInformations()
     let notesByUser: NoteStorage[] = this.getNotes()
     let notes: Note[] = this.getNotesByUserId(user.id)
@@ -170,7 +209,13 @@ export class NoteService {
     }
     this.localStorageRegister(notesByUser)
   }
-  public shareNote(note: Note, userIdDestiny: number){
+     /**
+   * @author Joao Pedro
+   * @description Method to share note with another user
+   * @param note Note object
+   * @param userIdDestiny Number
+   */
+  public shareNote(note: Note, userIdDestiny: number): void{
     let user: User = this.authService.getUserInformations()
     let notesByUser: NoteStorage[] = this.getNotes()
     let foundUser = this.verifyUserExist(notesByUser, userIdDestiny)
