@@ -26,6 +26,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { SafeHtmlPipe } from '../pipes/safeHtml.pipe';
 import { ModalDetailsComponent } from './components/note-list/modal-details/modal-details.component';
 import { ModalShareComponent } from './components/note-list/modal-share/modal-share.component';
+import { CustomFilterPipe } from '../pipes/custom-filter.pipe';
 
 
 
@@ -39,7 +40,8 @@ import { ModalShareComponent } from './components/note-list/modal-share/modal-sh
     ModalComponent,
     SafeHtmlPipe,
     ModalDetailsComponent,
-    ModalShareComponent
+    ModalShareComponent,
+    CustomFilterPipe
   ],
   imports: [
     CommonModule,

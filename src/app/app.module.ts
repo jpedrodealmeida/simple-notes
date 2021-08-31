@@ -21,6 +21,8 @@ import { NoteRoutingModule } from './note/note-routing.module';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http';
 import { config } from 'rxjs';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { config } from 'rxjs';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     UserModule,
     NoteModule,
     MatMenuModule,
@@ -40,6 +44,7 @@ import { config } from 'rxjs';
     MatCardModule,
     FontAwesomeModule,
     MatBadgeModule,
+    MatInputModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       preventDuplicates: false,

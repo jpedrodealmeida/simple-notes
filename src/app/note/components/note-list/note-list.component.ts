@@ -21,6 +21,7 @@ export class NoteListComponent implements OnInit {
   public selectedId!: number
   public noteList!: Note[]
   public sharedList!: Note[]
+  public filter: {title: string} = {title: ''}
   constructor(
     private authService: AuthService,
     private noteService: NoteService,
@@ -34,6 +35,8 @@ export class NoteListComponent implements OnInit {
   ngOnInit(): void {
     this.getNotes()
     this.getSharedNotes()
+    this.searchListen()
+
   }
   private getNotes(){
     let user = this.authService.getUserInformations()
@@ -99,5 +102,11 @@ export class NoteListComponent implements OnInit {
     });
 
   }
+  private searchListen(){
+    this.noteService.searchSub.subscribe(value =>{
+      this.filter.title = value
+    })
+  }
+
 
 }

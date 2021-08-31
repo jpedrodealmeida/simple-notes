@@ -36,6 +36,13 @@
                 </mat-toolbar-row>
                 <mat-toolbar-row>
                     <span>Filter</span>
+                    <form [formGroup]="form">
+                        <mat-form-field class="input-filter">
+                            <mat-label></mat-label>
+                            <input matInput formControlName="search" placeholder="Filter your notes" value="">
+                        </mat-form-field>
+                    </form>
+                    
                     <span class="example-spacer"></span>
                     <div class="info-grid">
                         <span matBadge="4" matBadgeOverlap="false" class="notifications"

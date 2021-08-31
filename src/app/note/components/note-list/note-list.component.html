@@ -1,7 +1,7 @@
 <div class="main">
     <fieldset class="filed-set">
         <legend class="box-title">Note List</legend>
-        <div class="list-structure" *ngFor="let task of noteList">
+        <div class="list-structure" *ngFor="let task of noteList | customfilterPipe: filter">
             <app-note-card [title]="task.title" [date]="task.date"
                 [category]="task.category" [content]="task.content"
                 [noteId]='task.id' (delete)="deleteNote($event)"

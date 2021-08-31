@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { NoteStorage } from '../interfaces/note-storage.interface';
 import { Note } from '../interfaces/note.interface';
 import { User } from '../interfaces/user.interface';
@@ -11,6 +12,7 @@ import { UserService } from './user.service';
 export class NoteService {
 
   public errorEvent = new EventEmitter<boolean>()
+  public searchSub = new Subject<string>()
   
   constructor(
     private authService: AuthService,

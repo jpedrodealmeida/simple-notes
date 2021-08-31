@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { User } from '../interfaces/user.interface';
 import { AuthService } from '../services/auth.service';
+import { NoteService } from '../services/note.service';
 
 
 @Component({
@@ -12,6 +14,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  public form!: FormGroup
   public hasNotification: boolean = true
   public showMenu: boolean = false
   public userIcon = faUser
@@ -20,12 +23,26 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private noteService: NoteService
   ) { }
 
   ngOnInit(): void {
     this.authVerify()
     this.getUserInfo()
+    this.formInit()
+  }
+  private searchListen(){
+    this.form.controls['search'].valueChanges.subscribe(value =>{
+      this.noteService.searchSub.next(value)
+    })
+  }
+  private formInit(){
+    this.form = this.fb.group({
+      search: ""
+    })
+    this.searchListen()
   }
   private getUserInfo(){
     this.user = this.authService.getUserInformations()
