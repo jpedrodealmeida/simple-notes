@@ -17,7 +17,7 @@ export class AuthService {
   ) { }
 
   public verifyAuthentication(): boolean{
-    let userAuth = localStorage.getItem('auth')
+    let userAuth = sessionStorage.getItem('auth')
     if(userAuth)
       this.userAuthenticate(JSON.parse(userAuth))
     this.authUserEvent.emit(this.isAuthenticated)
@@ -35,10 +35,10 @@ export class AuthService {
   }
   private setUserCredentials(user: User): void{
     this.isAuthenticated = true
-    localStorage.setItem('auth', JSON.stringify(user))
+    sessionStorage.setItem('auth', JSON.stringify(user))
   }
   public getUserInformations(): any{
-    let userAuth = localStorage.getItem('auth')
+    let userAuth = sessionStorage.getItem('auth')
       if(userAuth)
         return JSON.parse(userAuth)
       return userAuth
@@ -46,7 +46,7 @@ export class AuthService {
   public logout(): void{
     this.isAuthenticated = false
     this.authUserEvent.emit(false)
-    localStorage.removeItem('auth')
+    sessionStorage.removeItem('auth')
   }
 
   
