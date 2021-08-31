@@ -1,5 +1,6 @@
 .main-share-grid{
     width: 100%;
+    min-height: 250px;
     background: url(../../../../../assets/back.png);
     padding: 20px 20px;
 }
@@ -14,4 +15,8 @@
 }
 .user-name:hover{
     background-color: rgba(204, 198, 198, 0.486);
+}
+.empty-user{
+    text-align: center;
+    margin-top: 38px;
 }

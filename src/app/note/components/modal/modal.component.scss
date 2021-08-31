@@ -2,6 +2,9 @@
     display: grid;
     justify-content: center;
     align-items: center;
+    background: url(../../../../assets/back.png);
+    width: 100%;
+    min-height: 150px;
 }
 .actions{
     margin-top: 12px;
@@ -9,4 +12,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 12px;
+}
+::ng-deep .mat-dialog-container{
+    padding: 0 !important;
 }
