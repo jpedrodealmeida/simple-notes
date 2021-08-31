@@ -78,15 +78,15 @@ export class NoteListComponent implements OnInit {
   public editNote(value: number){
     this.router.navigate(['../edit'], {relativeTo: this.route, queryParams: {id: value}});
   }
-  public showNote(value: number){
-    this.openDetailsDialog(value)
+  public showNote(value: number, isShared: boolean = false){
+    this.openDetailsDialog(value, isShared)
   }
-  private openDetailsDialog(noteId: number): void {
+  private openDetailsDialog(noteId: number, isShared?: boolean): void {
     this.selectedId = noteId
     const dialogRef = this.matDialog.open(ModalDetailsComponent, {
       width: '850px',
       height: '650px',
-      data: {id: noteId}
+      data: {id: noteId, isShared: isShared}
     });
 
   }

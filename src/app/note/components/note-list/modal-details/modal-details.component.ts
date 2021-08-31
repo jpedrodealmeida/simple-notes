@@ -15,7 +15,7 @@ export class ModalDetailsComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModalDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: {id: number, isShared: boolean},
     private noteService: NoteService
     ) { }
 
@@ -23,7 +23,10 @@ export class ModalDetailsComponent implements OnInit {
     this.getNote()
   }
   private getNote(): void{
-    this.note = this.noteService.getNoteById(this.data.id)
+    if(!this.data.isShared)
+      this.note = this.noteService.getNoteById(this.data.id)
+    else
+      this.note = this.noteService.getNoteSharedById(this.data.id)
   }
   public closeModal() {
     this.dialogRef.close(null);

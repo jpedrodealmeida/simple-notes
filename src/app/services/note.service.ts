@@ -136,6 +136,16 @@ export class NoteService {
     }
     return note  
   }
+  public getNoteSharedById(noteId: number){
+    let user = this.authService.getUserInformations()
+    let note!: Note
+    if(user){
+      let notes = this.getNotesSharedByUserId(user.id)
+      if(notes)
+        note = this.findNote(notes, noteId)
+    }
+    return note  
+  }
   private findNote(notes: Note[], noteId: number): Note{
     let note!: Note 
     let found = notes.find((note: Note) => note.id == noteId)

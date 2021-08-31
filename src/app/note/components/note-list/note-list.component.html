@@ -23,7 +23,7 @@
                 <app-note-card [title]="task.title" [date]="task.date"
                     [category]="task.category" [content]="task.content"
                     [noteId]='task.id' (delete)="deleteNote($event)"
-                    (edit)="editNote($event)" (show)="showNote($event)"
+                    (edit)="editNote($event)" (show)="showNote($event, true)"
                     (share)="shareNote($event)" [isShared]="true"></app-note-card>
             </div>
             <div class="empty-state" *ngIf="!sharedList?.length">
