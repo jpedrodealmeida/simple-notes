@@ -84,8 +84,8 @@ export class NoteListComponent implements OnInit {
   private openSharedDialog(noteId: number): void {
     this.selectedId = noteId
     const dialogRef = this.matDialog.open(ModalShareComponent, {
-      width: '850px',
-      height: '450px',
+      width: '650px',
+      height: '250px',
       data: {id: noteId}
     });
 

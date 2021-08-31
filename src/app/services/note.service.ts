@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { NoteStorage } from '../interfaces/note-storage.interface';
 import { Note } from '../interfaces/note.interface';
 import { User } from '../interfaces/user.interface';
@@ -10,6 +10,7 @@ import { UserService } from './user.service';
 })
 export class NoteService {
 
+  public errorEvent = new EventEmitter<boolean>()
   
   constructor(
     private authService: AuthService,
@@ -141,6 +142,45 @@ export class NoteService {
       }
     }
     this.localStorageRegister(notesByUser)
+  }
+  public shareNote(note: Note, userIdDestiny: number){
+    let user: User = this.authService.getUserInformations()
+    let notesByUser: NoteStorage[] = this.getNotes()
+    let foundUser = this.verifyUserExist(notesByUser, userIdDestiny)
+    if (foundUser) {
+      notesByUser.forEach(noteByUser => {
+        if (noteByUser.userId == userIdDestiny) {
+          if (noteByUser.shared?.length) {
+            let found = this.noteReadyExist(noteByUser.shared, note)
+            if (found)
+              this.errorEvent.emit(true)
+            else
+              noteByUser.shared.push(note)
+          } else {
+            noteByUser.shared = []
+            noteByUser.shared.push(note)
+          }
+        }
+      })
+    } else {
+      notesByUser.push({userId: user.id, notes: [], shared: [note]})
+    }
+    this.localStorageRegister(notesByUser)
+  }
+  private verifyUserExist(notesByUser: NoteStorage[], userId: number): boolean{
+    let found = notesByUser.find(noteByUser => noteByUser.userId == userId)
+    if(found) return true
+    return false
+  }
+  private noteReadyExist(notes: Note[], noteShared: Note): Note{
+    let noteFound!: Note
+    let found = notes.find(note => note.id == noteShared.id)
+    if(found)
+      noteFound = found
+    return noteFound
+  }
+  private createObjToShare(){
+
   }
 
 }

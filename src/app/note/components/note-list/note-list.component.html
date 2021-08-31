@@ -1,17 +1,39 @@
-<fieldset class="filed-set">
-    <legend class="box-title">Note List</legend>
-    <div class="list-structure" *ngFor="let task of taskList">
-        <app-note-card [title]="task.title" [date]="task.date"
-            [category]="task.category" [content]="task.content"
-            [noteId]='task.id' (delete)="deleteNote($event)"
-            (edit)="editNote($event)" (show)="showNote($event)"
-            (share)="shareNote($event)"></app-note-card>
+<div class="main">
+    <fieldset class="filed-set">
+        <legend class="box-title">Note List</legend>
+        <div class="list-structure" *ngFor="let task of taskList">
+            <app-note-card [title]="task.title" [date]="task.date"
+                [category]="task.category" [content]="task.content"
+                [noteId]='task.id' (delete)="deleteNote($event)"
+                (edit)="editNote($event)" (show)="showNote($event)"
+                (share)="shareNote($event)"></app-note-card>
+        </div>
+        <div class="empty-state" *ngIf="!taskList?.length">
+            <h1>
+                Sorry, you don't have registered notes yet...
+            </h1>
+            <fa-icon style="font-size: 28px; margin-left: 12px;" [icon]="emptyStateIcon"></fa-icon>
+        </div>
+      
+    </fieldset>
+    <div class="share-grid">
+        <fieldset class="filed-set">
+            <legend class="box-title">Shared List</legend>
+            <div class="list-structure" *ngFor="let task of taskList">
+                <app-note-card [title]="task.title" [date]="task.date"
+                    [category]="task.category" [content]="task.content"
+                    [noteId]='task.id' (delete)="deleteNote($event)"
+                    (edit)="editNote($event)" (show)="showNote($event)"
+                    (share)="shareNote($event)"></app-note-card>
+            </div>
+            <div class="empty-state" *ngIf="!taskList?.length">
+                <h1>
+                    Sorry, no one has shared anything with you yet...
+                </h1>
+                <fa-icon style="font-size: 28px; margin-left: 12px;" [icon]="emptyStateIcon"></fa-icon>
+            </div>
+          
+        </fieldset>
     </div>
-    <div class="empty-state" *ngIf="!taskList?.length">
-        <h1>
-            Sorry, you don't have registered notes yet...
-        </h1>
-        <fa-icon style="font-size: 28px; margin-left: 12px;" [icon]="emptyStateIcon"></fa-icon>
-    </div>
-  
-</fieldset>
+    
+</div>

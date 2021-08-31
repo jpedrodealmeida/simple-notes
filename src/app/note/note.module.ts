@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { MatCardModule } from '@angular/material/card';
 import { NoteListComponent } from './components/note-list/note-list.component';
@@ -56,7 +57,8 @@ import { ModalShareComponent } from './components/note-list/modal-share/modal-sh
     AngularEditorModule,
     MatDialogModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
     
   ],
   entryComponents: [ModalComponent, ModalDetailsComponent, ModalShareComponent]

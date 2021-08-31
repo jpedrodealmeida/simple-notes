@@ -4,7 +4,9 @@
     </div>
     
     <mat-list *ngFor="let user of users">
-        <mat-list-item class="user-name">{{user.name}}</mat-list-item>
+        <mat-list-item class="user-name" (click)="selectUser(user.id)">
+            {{user.name}}
+        </mat-list-item>
         <mat-divider></mat-divider>
     </mat-list>
 </div>
