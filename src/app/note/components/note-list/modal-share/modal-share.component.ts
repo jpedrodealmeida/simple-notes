@@ -34,14 +34,9 @@ export class ModalShareComponent implements OnInit {
     this.getUsers()
     this.formInit()
     this.getNote()
-    this.errorListen()
+
   }
-  private errorListen(){
-    this.noteService.errorEvent.subscribe(hasErr =>{
-      if(hasErr)
-        this.toastr.info('Sorry, you already did it')
-    })
-  }
+  
   private formInit(){
     this.form = this.fb.group({
       pepperoni: false,
