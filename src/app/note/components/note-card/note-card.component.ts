@@ -49,6 +49,9 @@ export class NoteCardComponent implements OnInit {
   public showEmit(){
     this.show.emit(this.noteId)
   }
+  public shareEmit(){
+    this.share.emit(this.noteId)
+  }
 
 
 }

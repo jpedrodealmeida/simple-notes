@@ -4,7 +4,8 @@
         <app-note-card [title]="task.title" [date]="task.date"
             [category]="task.category" [content]="task.content"
             [noteId]='task.id' (delete)="deleteNote($event)"
-            (edit)="editNote($event)" (show)="showNote($event)"></app-note-card>
+            (edit)="editNote($event)" (show)="showNote($event)"
+            (share)="shareNote($event)"></app-note-card>
     </div>
     <div class="empty-state" *ngIf="!taskList?.length">
         <h1>

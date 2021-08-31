@@ -9,6 +9,8 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 import { MatCardModule } from '@angular/material/card';
 import { NoteListComponent } from './components/note-list/note-list.component';
@@ -22,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ModalComponent } from './components/modal/modal.component';
 import { SafeHtmlPipe } from '../pipes/safeHtml.pipe';
 import { ModalDetailsComponent } from './components/note-list/modal-details/modal-details.component';
+import { ModalShareComponent } from './components/note-list/modal-share/modal-share.component';
 
 
 
@@ -34,7 +37,8 @@ import { ModalDetailsComponent } from './components/note-list/modal-details/moda
     NoteFormComponent,
     ModalComponent,
     SafeHtmlPipe,
-    ModalDetailsComponent
+    ModalDetailsComponent,
+    ModalShareComponent
   ],
   imports: [
     CommonModule,
@@ -50,9 +54,11 @@ import { ModalDetailsComponent } from './components/note-list/modal-details/moda
     FormsModule,
     ReactiveFormsModule,
     AngularEditorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule,
+    MatListModule
     
   ],
-  entryComponents: [ModalComponent, ModalDetailsComponent]
+  entryComponents: [ModalComponent, ModalDetailsComponent, ModalShareComponent]
 })
 export class NoteModule { }

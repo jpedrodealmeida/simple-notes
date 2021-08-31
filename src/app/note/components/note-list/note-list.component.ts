@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NoteService } from 'src/app/services/note.service';
 import { ModalComponent } from '../modal/modal.component';
 import { ModalDetailsComponent } from './modal-details/modal-details.component';
+import { ModalShareComponent } from './modal-share/modal-share.component';
 
 @Component({
   selector: 'app-note-list',
@@ -71,8 +72,20 @@ export class NoteListComponent implements OnInit {
   private openDetailsDialog(noteId: number): void {
     this.selectedId = noteId
     const dialogRef = this.matDialog.open(ModalDetailsComponent, {
-      width: '950px',
+      width: '850px',
       height: '650px',
+      data: {id: noteId}
+    });
+
+  }
+  public shareNote(value: number){
+    this.openSharedDialog(value)
+  }
+  private openSharedDialog(noteId: number): void {
+    this.selectedId = noteId
+    const dialogRef = this.matDialog.open(ModalShareComponent, {
+      width: '850px',
+      height: '450px',
       data: {id: noteId}
     });
 
