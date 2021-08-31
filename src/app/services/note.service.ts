@@ -1,5 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
+
 import { Subject } from 'rxjs';
+
 import { NoteStorage } from '../interfaces/note-storage.interface';
 import { Note } from '../interfaces/note.interface';
 import { User } from '../interfaces/user.interface';

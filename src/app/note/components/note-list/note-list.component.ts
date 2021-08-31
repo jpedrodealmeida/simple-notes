@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { faSadCry } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
+
 import { Note } from 'src/app/interfaces/note.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { NoteService } from 'src/app/services/note.service';
